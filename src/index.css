@@ -10,6 +10,26 @@
   }
 }
 
+@layer components {
+  .header-nav-link {
+    @apply flex items-center justify-center gap-2 relative py-3;
+  }
+
+  .header-nav-link::after {
+    content: "";
+    transition: background-color 0.15s ease, width 0.15s ease;
+    @apply inline-block absolute -bottom-4 w-0 h-0.5 bg-transparent;
+  }
+
+  .header-nav-link.active::after {
+    @apply w-full bg-brand-violet-500;
+  }
+
+  .header-nav-link:hover::after:not(.active) {
+    @apply w-full bg-brand-violet-500/20;
+  }
+}
+
 @layer utilities {
   .container {
     @apply max-w-7xl w-full mx-auto px-4 sm:px-5;
