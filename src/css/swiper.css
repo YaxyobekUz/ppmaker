@@ -1,0 +1,42 @@
+/* homepage hero main swiper */
+/* swiper buttons */
+.homepage-hero-main-swiper :is(.swiper-button-prev, .swiper-button-next) {
+  width: 36px;
+  height: 36px;
+  border-radius: 100px;
+  background: white;
+  scale: 0;
+  transition: scale 0.15s ease;
+}
+
+.homepage-hero-main-swiper
+  :is(.swiper-button-prev, .swiper-button-next)::after {
+  display: inline-block;
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url(../assets/images/icons/violet-arrow-right.svg);
+  background-size: cover;
+}
+
+.homepage-hero-main-swiper .swiper-button-prev::after {
+  rotate: 180deg;
+}
+
+.homepage-hero-main-swiper:hover :is(.swiper-button-prev, .swiper-button-next) {
+  scale: 1;
+}
+
+/* swiper pagination */
+.default-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #7a08fa;
+  opacity: 1;
+  border: 2px solid white;
+  transition: scale 0.15s ease;
+}
+
+.default-pagination .swiper-pagination-bullet-active {
+  scale: 1.2;
+}
