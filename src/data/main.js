@@ -10,7 +10,7 @@ export const homepageHeroSlides = [
   {
     id: 1,
     title: "pictures for girls",
-    link: "/services/create/profile-picture/for-boys/1",
+    link: "/services/create/profile-picture/for-girls/1",
     image: heroSlideBg0,
   }
 ];
