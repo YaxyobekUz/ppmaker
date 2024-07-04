@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+// data
+import { homepageHeroSlides } from "../data/main";
+
+// components
+import MainLoader from "../components/MainLoader";
+
 // swiper
 import "swiper/css";
 import "../css/swiper.css";
@@ -8,31 +14,29 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { homepageHeroSlides } from "../data/main";
-
-// images
-import MainLoader from "../components/MainLoader";
 
 const Home = () => {
   return (
     <>
       {/* hero */}
-      <div className="">
+      <div className="w-full pb-12">
         <div className="container">
-          <div className="flex gap-5 w-full">
+          <div className="flex gap-5">
             {/* main swiper */}
-            <div className="w-[calc(100%-320px)] z-0">
+            <div className="w-full h-auto z-0 aspect-video lg:aspect-auto lg:w-[calc(100%-340px)]">
               <Swiper
                 loop={true}
-                pagination={true}
                 navigation={true}
                 spaceBetween={16}
+                pagination={{
+                  clickable: true,
+                }}
                 autoplay={{
                   delay: 4500,
                   disableOnInteraction: true,
                 }}
                 modules={[Navigation, Pagination, Autoplay]}
-                className="homepage-hero-main-swiper default-pagination w-full h-96 rounded-xl"
+                className="homepage-hero-main-swiper default-pagination w-full h-full rounded-lg sm:rounded-xl lg:h-96"
               >
                 {homepageHeroSlides.map((slide) => {
                   const [loader, setLoader] = useState(true);
@@ -51,7 +55,7 @@ const Home = () => {
                           onLoad={() => setLoader(false)}
                           className={`${
                             !loader ? "block" : "hidden"
-                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-xl`}
+                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
                         />
 
                         {/* loader */}
@@ -68,11 +72,13 @@ const Home = () => {
             </div>
 
             {/* ads swiper */}
-            <div className="min-w-80 p-1.5 rounded-xl border-2 border-brand-violet-500">
+            <aside className="hidden min-w-80 z-0 p-1.5 rounded-xl border-2 border-brand-violet-500 lg:block">
               <Swiper
                 loop={true}
-                pagination={true}
                 spaceBetween={16}
+                pagination={{
+                  clickable: true,
+                }}
                 autoplay={{
                   delay: 4500,
                   disableOnInteraction: true,
@@ -100,7 +106,7 @@ const Home = () => {
                   );
                 })}
               </Swiper>
-            </div>
+            </aside>
           </div>
         </div>
       </div>

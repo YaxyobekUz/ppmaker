@@ -40,3 +40,10 @@
 .default-pagination .swiper-pagination-bullet-active {
   scale: 1.2;
 }
+
+@media only screen and (max-width: 640px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
