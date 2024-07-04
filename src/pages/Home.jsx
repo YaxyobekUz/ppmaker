@@ -59,7 +59,7 @@ const Home = () => {
                         />
 
                         {/* loader */}
-                        {!loader && (
+                        {loader && (
                           <div className="flex items-center justify-center w-full h-full bg-brand-darkblue-300/10">
                             <MainLoader className="size-6 sm:size-7" />
                           </div>

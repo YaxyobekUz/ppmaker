@@ -129,7 +129,7 @@ const Header = () => {
                       <ul className="space-y-1">
                         <li className="group/item relative">
                           <div className="dropdown-item group-hover/item:bg-brand-darkblue-300/5">
-                            <span>Profi rasm yaratish</span>
+                            <span>Profil rasmini yaratish</span>
                             <img
                               width={16}
                               height={16}
@@ -186,7 +186,7 @@ const Header = () => {
                             className="dropdown-item"
                             to="/services/create/special-profile-picture"
                           >
-                            Maxsus profil rasmi yaratish
+                            Maxsus profil rasmini yaratish
                           </Link>
                         </li>
                       </ul>
