@@ -15,6 +15,15 @@
 }
 
 @layer components {
+  /* buttons */
+  .btn-secondary {
+    @apply flex items-center justify-center gap-2 w-max px-6 py-2.5 rounded-full border border-brand-darkblue-300/15 text-base xs:text-lg;
+  }
+
+  .btn-secondary img {
+    @apply size-5 xs:size-6;
+  }
+
   /* header */
   .header-nav-link {
     @apply flex items-center justify-normal gap-2 relative py-3 lg:justify-center;
@@ -58,7 +67,7 @@
     height: 1px;
   }
 
-  /* section initial styles */
+  /* sections initial styles */
   .section-content {
     @apply space-y-8;
   }

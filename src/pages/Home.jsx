@@ -17,6 +17,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // images
 import imageIcon from "../assets/images/icons/image.svg";
+import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
 
 const Home = () => {
   return (
@@ -167,6 +168,16 @@ const Home = () => {
               </li>
             ))}
           </ul>
+
+          <Link to="/services" className="btn-secondary">
+            <span>Barcha xizmatlar</span>
+            <img
+              width={24}
+              height={24}
+              src={rightArrowIcon}
+              alt="arrow right icon"
+            />
+          </Link>
         </div>
       </section>
     </>
