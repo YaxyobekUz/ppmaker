@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-// data
-import { homepageHeroSlides } from "../data/main";
-
 // components
 import MainLoader from "../components/MainLoader";
+
+// data
+import { homepageHeroSlides, services } from "../data/main";
 
 // swiper
 import "swiper/css";
@@ -14,6 +14,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+// images
+import imageIcon from "../assets/images/icons/image.svg";
 
 const Home = () => {
   return (
@@ -110,6 +113,62 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* services */}
+      <section className="py-12">
+        <div className="container section-content">
+          {/* section header */}
+          <div className="section-header">
+            <div className="section-header-details">
+              <h2>Xizmatlar</h2>
+              <p>
+                O'zingiz uchun kerakli bo'lgan xizmat turini tanlab bepul
+                foydalaning!
+              </p>
+            </div>
+          </div>
+
+          {/* section body */}
+          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {services.slice(0, 4).map((service) => (
+              <li key={service.id} className="w-full h-auto aspect-[59/80]">
+                <Link
+                  to={service.link}
+                  title={service.name}
+                  style={{ backgroundImage: `url(${service.image})` }}
+                  className="flex items-start flex-col justify-between relative w-full h-full overflow-hidden bg-brand-darkblue-300/10 bg-cover bg-center bg-no-repeat p-2.5 rounded-lg xs:p-3.5 sm:rounded-xl sm:p-5"
+                >
+                  {/* number of images badge */}
+                  <div
+                    title="number of images"
+                    aria-label="number of images"
+                    className="flex items-center gap-1 bg-white px-1 py-0.5 rounded-lg sm:gap-2"
+                  >
+                    <img
+                      width={20}
+                      height={20}
+                      src={imageIcon}
+                      alt="image icon"
+                      className="size-4 xs:size-5"
+                    />
+                    <span className="text-sm xs:text-base">
+                      {service.numberOfImages}
+                    </span>
+                  </div>
+
+                  {/* title */}
+                  <h3 className="z-1 text-base leading-5 font-semibold text-white xs:leading-normal xs:text-lg sm:text-xl">
+                    {service.title}
+                  </h3>
+
+                  {/* shadow */}
+                  <div className="card-shadow"></div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </>
   );
 };
