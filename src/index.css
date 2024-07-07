@@ -16,12 +16,20 @@
 
 @layer components {
   /* buttons */
-  .btn-secondary {
-    @apply flex items-center justify-center gap-2 w-max px-6 py-2.5 rounded-full border border-brand-darkblue-300/15 text-base xs:text-lg;
+  .btn {
+    @apply px-6 py-2.5 text-base xs:text-lg;
   }
 
-  .btn-secondary img {
+  .btn img {
     @apply size-5 xs:size-6;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-violet-500 rounded-full text-white;
+  }
+
+  .btn-secondary {
+    @apply btn flex items-center justify-center gap-2 w-max h-11 rounded-full border border-brand-darkblue-300/15 xs:h-12;
   }
 
   /* header */

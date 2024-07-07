@@ -73,7 +73,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 inset-x-0 z-1 w-full bg-white py-4 mb-12 border-b border-brand-darkblue-300/15">
+      <header className="sticky top-0 inset-x-0 z-2 w-full bg-white py-4 mb-12 border-b border-brand-darkblue-300/15">
         <div className="container">
           <div className="flex items-center justify-between">
             {/* logo & hamburger btn wrapper */}

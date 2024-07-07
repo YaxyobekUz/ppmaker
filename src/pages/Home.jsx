@@ -17,6 +17,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // images
 import imageIcon from "../assets/images/icons/image.svg";
+import manualImg from "../assets/images/others/manual.png";
 import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
 
 const Home = () => {
@@ -178,6 +179,46 @@ const Home = () => {
               alt="arrow right icon"
             />
           </Link>
+        </div>
+      </section>
+
+      {/* manual section */}
+      <section className="py-12">
+        <div className="container section-content !max-w-2xl md:!max-w-6xl">
+          <div className="grid grid-cols-1 gap-5 xs:gap-6 md:grid-cols-2 lg:gap-12">
+            {/* image wrapper */}
+            <div className="flex justify-center w-full">
+              <img
+                width={610}
+                height={610}
+                title="manual"
+                src={manualImg}
+                alt="manual image"
+                className="w-5/6 h-auto aspect-square xs:w-3/4  md:w-full"
+              />
+            </div>
+
+            {/* section details */}
+            <div className="flex flex-col items-center justify-center gap-5 text-center xs:gap-6 md:items-start md:text-start">
+              <h2 className="">
+                Xizmatlardan foydalanish <br /> uchun qo'llanma
+              </h2>
+
+              {/* description */}
+              <p className="text-base xs:text-lg">
+                Siz xizmatlarimizdan qanday foydalanishni bila olmayapsizmi?
+                Hoziroq xizmatlardan foydalanish uchun qo'llanma sahifasiga
+                tashrif buyuring!
+              </p>
+
+              {/* buttons wrapper */}
+              <div className="flex items-center gap-3.5">
+                <Link to="/manual" className="btn-primary">
+                  Qo'llanmadan foydalanish
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
