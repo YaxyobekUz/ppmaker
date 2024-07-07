@@ -8,6 +8,10 @@
   body {
     @apply text-lg font-medium leading-6 font-Poppins text-brand-darkblue-700;
   }
+
+  h2 {
+    @apply text-2xl font-bold text-brand-darkblue-700 sm:text-3xl;
+  }
 }
 
 @layer components {
@@ -52,6 +56,27 @@
     @apply inline-block w-3.5 bg-brand-darkblue-300/15;
     content: "";
     height: 1px;
+  }
+
+  /* section initial styles */
+  .section-content {
+    @apply space-y-8;
+  }
+
+  .section-header {
+    @apply flex items-end justify-between gap-5;
+  }
+
+  .section-header-details {
+    @apply space-y-3 xs:space-y-4;
+  }
+
+  .section-header-details p {
+    @apply text-base text-brand-darkblue-300 xs:text-lg;
+  }
+
+  .card-shadow {
+    @apply absolute bottom-0 inset-x-0 w-full h-32 bg-gradient-to-b from-transparent to-black;
   }
 }
 
