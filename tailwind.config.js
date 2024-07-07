@@ -7,6 +7,7 @@ export default {
         brand: {
           violet: {
             500: "#7A08FA",
+            200: "#FBF8FF",
           },
 
           darkblue: {

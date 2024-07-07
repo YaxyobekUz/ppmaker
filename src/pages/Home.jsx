@@ -144,7 +144,7 @@ const Home = () => {
                   <div
                     title="number of images"
                     aria-label="number of images"
-                    className="flex items-center gap-1 bg-white px-1 py-0.5 rounded-lg sm:gap-2"
+                    className="flex items-center gap-1 bg-white px-1 py-0.5 rounded sm:rounded-lg sm:gap-2"
                   >
                     <img
                       width={20}
@@ -183,7 +183,7 @@ const Home = () => {
       </section>
 
       {/* manual section */}
-      <section className="py-12">
+      <section className="py-12 bg-brand-violet-200">
         <div className="container section-content !max-w-2xl md:!max-w-6xl">
           <div className="grid grid-cols-1 gap-5 xs:gap-6 md:grid-cols-2 lg:gap-12">
             {/* image wrapper */}
