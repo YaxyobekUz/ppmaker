@@ -25,11 +25,11 @@
   }
 
   .btn-primary {
-    @apply btn bg-brand-violet-500 rounded-full text-white;
+    @apply btn bg-brand-violet-500 rounded-full text-white transition-colors hover:bg-brand-violet-500/80;
   }
 
   .btn-secondary {
-    @apply btn flex items-center justify-center gap-2 w-max h-11 rounded-full border border-brand-darkblue-300/15 xs:h-12;
+    @apply btn flex items-center justify-center gap-2 w-max h-11 rounded-full border border-brand-darkblue-300/15 transition-colors hover:bg-brand-violet-200 xs:h-12;
   }
 
   /* header */
