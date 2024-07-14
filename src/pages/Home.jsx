@@ -63,7 +63,7 @@ const Home = () => {
                           onLoad={() => setLoader(false)}
                           className={`${
                             !loader ? "block" : "hidden"
-                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
+                          } smooth-opening w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
                         />
 
                         {/* loader */}
@@ -287,6 +287,34 @@ const Home = () => {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* profile images for girls */}
+      <section className="py-12 sm:py-16">
+        <div className="container section-content">
+          <div className="section-header">
+            <h2>Qizlar uchun profil rasmlari</h2>
+          </div>
+
+          {/* profile images list */}
+          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {profileImagesForBoysData.map((card) => (
+              <Card key={card.id} card={card} />
+            ))}
+          </ul>
+
+          {/* service link */}
+          <div className="flex items-center w-full">
+            <div className="divider grow w-auto"></div>
+            <Link
+              className="btn-secondary"
+              to="/services/create/profile-picture/for-girls/1"
+            >
+              <span>Barchasini ko'rsatish</span>
+            </Link>
+            <div className="divider grow w-auto"></div>
           </div>
         </div>
       </section>
