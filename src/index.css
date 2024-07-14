@@ -10,7 +10,7 @@
   }
 
   h2 {
-    @apply text-2xl font-bold text-brand-darkblue-700 sm:text-3xl;
+    @apply text-xl leading-normal font-bold text-brand-darkblue-700 xs:text-2xl sm:text-3xl;
   }
 }
 
