@@ -1,0 +1,26 @@
+@keyframes smooth-opening {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.smooth-opening {
+  animation: smooth-opening 0.5s ease-in;
+}
+
+@keyframes smooth-closing {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.smooth-closing {
+  animation: smooth-closing 0.5s ease-in;
+  background: linear-gradient(90deg, #ffd60a, #ffc300);
+}
