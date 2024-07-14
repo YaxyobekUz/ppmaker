@@ -21,6 +21,7 @@ import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 import imageIcon from "../assets/images/icons/image.svg";
 import manualImg from "../assets/images/others/manual.png";
 import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
+import aboutFaviconSectionImg from "../assets/images/others/about-favicon-section-img.png";
 
 const Home = () => {
   return (
@@ -202,7 +203,7 @@ const Home = () => {
 
             {/* section details */}
             <div className="flex flex-col items-center justify-center gap-5 text-center xs:gap-6 md:items-start md:text-start">
-              <h2 className="">
+              <h2>
                 Xizmatlardan foydalanish <br /> uchun qo'llanma
               </h2>
 
@@ -228,7 +229,7 @@ const Home = () => {
       <section className="py-12 sm:py-16">
         <div className="container section-content">
           <div className="section-header">
-            <h2 className="">Bollar uchun profil rasmlari</h2>
+            <h2>Bollar uchun profil rasmlari</h2>
           </div>
 
           {/* profile images list */}
@@ -248,6 +249,44 @@ const Home = () => {
               <span>Barchasini ko'rsatish</span>
             </Link>
             <div className="divider grow w-auto"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* about favicon section */}
+      <section className="py-12 sm:py-16">
+        <div className="container section-content !max-w-2xl md:!max-w-7xl">
+          <div className="grid grid-cols-1 gap-5 xs:gap-6 md:grid-cols-2 lg:gap-12">
+            {/* image wrapper */}
+            <div className="flex justify-center w-full h-full">
+              <img
+                width={596}
+                height={428}
+                alt="website favicon"
+                title="website favicon"
+                src={aboutFaviconSectionImg}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* section details */}
+            <div className="flex flex-col items-center justify-center gap-5 text-center xs:gap-6 md:items-start md:text-start">
+              <h2>Veb-saytlar uchun favikon</h2>
+
+              {/* description */}
+              <p className="text-base xs:text-lg">
+                Sizning veb loyihangiz uchun bepul favikon kerakmi? Ha bo'lsa
+                hoziroq favikon yaratish sahifasiga tashrif buyurib yangicha
+                formatlarda favikonlar yarating!
+              </p>
+
+              {/* buttons wrapper */}
+              <div className="flex items-center gap-3.5">
+                <Link to="/services/create/favicon" className="btn-primary">
+                  Favikon yaratish
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
