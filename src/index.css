@@ -29,7 +29,12 @@
   }
 
   .btn-secondary {
-    @apply btn flex items-center justify-center gap-2 w-max h-11 rounded-full border border-brand-darkblue-300/15 transition-colors hover:bg-brand-violet-200 xs:h-12;
+    @apply btn flex items-center justify-center gap-3.5 w-max h-11 rounded-full border border-brand-darkblue-300/15 transition-colors hover:bg-brand-violet-200 xs:h-12;
+  }
+
+  /* divider */
+  .divider {
+    @apply w-full h-0.5 bg-brand-darkblue-300/5;
   }
 
   /* header */
@@ -77,7 +82,7 @@
 
   /* sections initial styles */
   .section-content {
-    @apply space-y-8;
+    @apply space-y-10;
   }
 
   .section-header {
