@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // components
+import Card from "../components/Card";
 import MainLoader from "../components/MainLoader";
-
-// data
-import { homepageHeroSlides, services } from "../data/main";
 
 // swiper
 import "swiper/css";
@@ -14,6 +12,10 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+// data
+import { homepageHeroSlides, services } from "../data/main";
+import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 
 // images
 import imageIcon from "../assets/images/icons/image.svg";
@@ -24,7 +26,7 @@ const Home = () => {
   return (
     <>
       {/* hero */}
-      <div className="w-full pb-12">
+      <div className="w-full pb-12 sm:pb-16">
         <div className="container">
           <div className="flex gap-5">
             {/* main swiper */}
@@ -117,7 +119,7 @@ const Home = () => {
       </div>
 
       {/* services */}
-      <section className="py-12">
+      <section className="py-12 sm:py-16">
         <div className="container section-content">
           {/* section header */}
           <div className="section-header">
@@ -183,7 +185,7 @@ const Home = () => {
       </section>
 
       {/* manual section */}
-      <section className="py-12 bg-brand-violet-200">
+      <section className="bg-brand-violet-200 py-12 sm:py-16">
         <div className="container section-content !max-w-2xl md:!max-w-6xl">
           <div className="grid grid-cols-1 gap-5 xs:gap-6 md:grid-cols-2 lg:gap-12">
             {/* image wrapper */}
@@ -218,6 +220,34 @@ const Home = () => {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* profile images for boys */}
+      <section className="py-12 sm:py-16">
+        <div className="container section-content">
+          <div className="section-header">
+            <h2 className="">Bollar uchun profil rasmlari</h2>
+          </div>
+
+          {/* profile images list */}
+          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {profileImagesForBoysData.map((card) => (
+              <Card key={card.id} card={card} />
+            ))}
+          </ul>
+
+          {/* service link */}
+          <div className="flex items-center w-full">
+            <div className="divider grow w-auto"></div>
+            <Link
+              className="btn-secondary"
+              to="/services/create/profile-picture/for-boys/1"
+            >
+              <span>Barchasini ko'rsatish</span>
+            </Link>
+            <div className="divider grow w-auto"></div>
           </div>
         </div>
       </section>
