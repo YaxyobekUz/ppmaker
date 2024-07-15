@@ -18,6 +18,7 @@ import { homepageHeroSlides, services } from "../data/main";
 import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 
 // images
+import pcImg from "../assets/images/others/pc.png";
 import imageIcon from "../assets/images/icons/image.svg";
 import manualImg from "../assets/images/others/manual.png";
 import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
@@ -343,6 +344,48 @@ const Home = () => {
               <span>Barchasini ko'rsatish</span>
             </Link>
             <div className="divider grow w-auto"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* create special profile image info section */}
+      <section className="py-12 sm:py-16">
+        <div className="container section-content !max-w-2xl md:!max-w-7xl">
+          <div className="grid grid-cols-1 gap-5 xs:gap-6 md:grid-cols-2 lg:gap-12">
+            {/* image wrapper */}
+            <div className="flex justify-center w-full h-full">
+              <img
+                src={pcImg}
+                width={596}
+                height={325}
+                alt="computer image"
+                title="computer image"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            {/* section details */}
+            <div className="flex flex-col items-center justify-center gap-5 text-center xs:gap-6 md:items-start md:text-start">
+              <h2>Maxsus profil rasmini yaratish</h2>
+
+              {/* description */}
+              <p className="text-base xs:text-lg">
+                Siz o'zingiz yoqtirgandek qilib profil rasmini yarata
+                olmadingizmi? Havotir olmang, hoziroq maxus profil rasmini
+                yaratish sahifasiga tashrif buyurib o'zingiz yoqtirgandek qilib
+                rasm yarating!
+              </p>
+
+              {/* buttons wrapper */}
+              <div className="flex items-center gap-3.5">
+                <Link
+                  to="/services/create/special-profile-picture"
+                  className="btn-primary"
+                >
+                  Maxsus profil rasmini yaratish
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
