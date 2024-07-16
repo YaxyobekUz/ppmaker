@@ -21,6 +21,7 @@ import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 import pcImg from "../assets/images/others/pc.png";
 import imageIcon from "../assets/images/icons/image.svg";
 import manualImg from "../assets/images/others/manual.png";
+import megaphoneImg from "../assets/images/others/megaphone.webp";
 import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
 import aboutFaviconSectionImg from "../assets/images/others/about-favicon-section-img.png";
 
@@ -64,7 +65,7 @@ const Home = () => {
                           onLoad={() => setLoader(false)}
                           className={`${
                             !loader ? "block" : "hidden"
-                          } smooth-opening w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
+                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
                         />
 
                         {/* loader */}
@@ -316,6 +317,41 @@ const Home = () => {
               <span>Barchasini ko'rsatish</span>
             </Link>
             <div className="divider grow w-auto"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* telegram section */}
+      <section className="py-12 sm:py-16">
+        <div className="container section-content">
+          <div className="w-full bg-brand-darkblue-300/10 bg-right bg-[url(./assets/images/others/telegram-bg.jpg)] bg-cover rounded-lg sm:rounded-full">
+            <div className="flex items-center max-w-4xl h-full p-4 xs:p-8 sm:pl-5 sm:py-0 sm:pr-12">
+              {/* megaphone */}
+              <img
+                src={megaphoneImg}
+                alt=""
+                className="hidden sm:inline-block w-60 md:w-72 lg:w-80"
+              />
+
+              {/* section details */}
+              <div className="space-y-3 md:space-y-5">
+                <h2 className="text-white text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl">
+                  Telegram kanalimizga obuna bo'ling
+                </h2>
+                <p className="text-sm font-normal text-white sm:text-base md:text-lg">
+                  Saytning so'nggi yangiliklaridan xabardor bo'lish uchun
+                  bizning rasmiy telegram kanalimizga obuna bo'ling!
+                </p>
+
+                <a
+                  target="_blank"
+                  href="https://t.me/ppmaker_uz"
+                  className="btn-primary inline-block bg-white py-1.5 px-4 rounded-md text-brand-darkblue-300 text-sm sm:py-2.5 sm:px-6 sm:rounded-full md:text-base lg:text-lg hover:bg-white/70"
+                >
+                  Obuna bo'lish
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
