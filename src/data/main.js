@@ -61,3 +61,30 @@ export const services = [
     image: heroSlideBg0,
   },
 ];
+
+export const faq = [
+  {
+    id: 0,
+    question: "Profil rasmini qanday yaratishim mumkin?",
+    answer:
+      "Agar siz qanday qilib profil rasmini yaratishni bilmayotgan bo'lsangiz `Foydalanish qo'llanmasi` bilan tanishib chiqing.",
+  },
+  {
+    id: 1,
+    question: "Men foydalanayotgan xizmat to'g'ri ishlamaydbi?",
+    answer:
+      "Siz foydalanooyatgan xizmat to'g'ri ishlamayotgan bo'lsa yoki noma'lum xatollikka duch kelsangiz iltimos `Bog'lanish` sahifasi orqali o'z murojaatingizni yozib qoldiring 😊",
+  },
+  {
+    id: 2,
+    question: "Barcha xizmatlar bilan qanday tanishib chiqishim mumkin?",
+    answer:
+      "Saytning barcha xizmatlari bilan tanishish uchun `Xizmatlar` sahifasiga tashrif buyuring.",
+  },
+  {
+    id: 3,
+    question: "Sayt administratorlari bilan qanday bog'lanish mumkin?",
+    answer:
+      "Turli murojaat, taklif va savollar uchun `Bog'lanish` sahifasiga tashrif buyuring. (Noma'qbul bo'lmagan savollargagina javob beramiz!)",
+  },
+];
