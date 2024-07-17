@@ -14,18 +14,28 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 // data
-import { homepageHeroSlides, services } from "../data/main";
+import { faq, homepageHeroSlides, services } from "../data/main";
 import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 
 // images
 import pcImg from "../assets/images/others/pc.png";
 import imageIcon from "../assets/images/icons/image.svg";
 import manualImg from "../assets/images/others/manual.png";
+import downArrowIcon from "../assets/images/icons/down-arrow.svg";
 import megaphoneImg from "../assets/images/others/megaphone.webp";
 import rightArrowIcon from "../assets/images/icons/right-arrow.svg";
 import aboutFaviconSectionImg from "../assets/images/others/about-favicon-section-img.png";
 
 const Home = () => {
+  const [activeFaqListItemIndex, setActiveFaqListItemIndex] = useState(null);
+  const changeActiveFaqListItem = (index) => {
+    if (activeFaqListItemIndex !== index) {
+      setActiveFaqListItemIndex(index);
+    } else {
+      setActiveFaqListItemIndex(null);
+    }
+  };
+
   return (
     <>
       {/* hero */}
@@ -423,6 +433,45 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* faq */}
+      <section id="faq" className="py-12 sm:py-16">
+        <div className="container section-content">
+          <h2 className="mb-10">Tez tez so'raladigan savollar</h2>
+
+          {/* faq list */}
+          <ul className="space-y-3.5">
+            {faq.map((item, index) => (
+              <li
+                key={item.id}
+                className={`${
+                  activeFaqListItemIndex === index ? "active-faq-list-item" : ""
+                } faq-list-item`}
+              >
+                <button
+                  onClick={() => changeActiveFaqListItem(index)}
+                  className="faq-list-item-btn"
+                >
+                  {/* question */}
+                  <h3 className="faq-list-item-question">{item.question}</h3>
+
+                  {/* arrow icon */}
+                  <img
+                    width={24}
+                    height={24}
+                    src={downArrowIcon}
+                    alt="down arrow icon"
+                    className="faq-list-item-icon"
+                  />
+                </button>
+
+                {/* answer */}
+                <p className="faq-list-item-answer">{item.answer}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>
