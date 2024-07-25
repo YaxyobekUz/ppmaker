@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-// components
-import QrCode from "../components/QrCode";
-
 // antd
 import "../css/antd.css";
 import { ColorPicker } from "antd";
+
+// components
+import QrCode from "../components/QrCode";
 import CollapsePanel from "../components/CollapsePanel";
 
 // images
+import listIcon from "../assets/images/icons/list.svg";
+import crossIcon from "../assets/images/icons/cross.svg";
 import deleteIcon from "../assets/images/icons/delete.svg";
 import downloadIcon from "../assets/images/icons/download.svg";
 import dotsQrCodeImg from "../assets/images/others/dots-qr-code.jpg";
@@ -88,6 +90,7 @@ const qrCornersSquareTypes = [
   },
 ];
 
+// page
 const QrCodeGenerator = () => {
   const [qrImage, setQrImage] = useState(null);
   const [qrDotsType, setQrDotsType] = useState("square");
@@ -119,26 +122,167 @@ const QrCodeGenerator = () => {
   };
 
   return (
-    <div className="">
+    <>
       {/* page header, title wrapper */}
-      <div className="flex items-center justify-between gap-5 px-5 py-3.5 border-b">
-        <h1 className="shrink-0 text-xl font-semibold">QR-kod yaratish</h1>
+      <div className="flex items-center justify-between border-b">
+        <h1 className="line-clamp-1 ml-5 text-xl font-semibold">
+          QR-kod yaratish
+        </h1>
 
         {/* toggle open latest qr codes list btn */}
         <button
+          className="shrink-0 px-5 py-4 text-base"
           onClick={() => setOpenLatestQrCodesList((state) => !state)}
-          className="py-1 text-base"
+          title={
+            openLatestQrCodesList ? "Show QR code" : "Last downloaded QR codes"
+          }
+          aria-label={
+            openLatestQrCodesList ? "Show QR code" : "Last downloaded QR codes"
+          }
         >
-          {!openLatestQrCodesList
-            ? "Oxirgi yaratilingan QR-kodlarni ko'rsatish"
-            : "Hozirgi QR-kodni ko'rsatish"}
+          {!openLatestQrCodesList ? (
+            <img
+              width={24}
+              height={24}
+              src={listIcon}
+              alt="list icon"
+              className="size-6"
+            />
+          ) : (
+            <img
+              width={24}
+              height={24}
+              src={crossIcon}
+              alt="cross icon"
+              className="size-6"
+            />
+          )}
         </button>
       </div>
 
       {/* page body */}
-      <div className="flex w-full h-full">
+      <div className="flex flex-col-reverse w-full h-full md:flex-row">
+        {/* responsive ads wrapper */}
+        <div className="space-y-5 p-5 sm:hidden">
+          {/* ads */}
+          <aside className="w-full h-auto aspect-square">
+            <div className="flex items-center justify-center size-full bg-brand-darkblue-300/5 rounded-lg">
+              <span className="text-center text-sm opacity-70">
+                Siz uchun reklama <br /> mavjud emas 😊
+              </span>
+            </div>
+          </aside>
+
+          {/* download btn wrapper */}
+          <div className="flex bg-brand-gold-500 rounded-lg">
+            {/* main download btn */}
+            <button
+              title="download qr code"
+              onClick={() => downloadQrCode("png")}
+              className="grow opacity-85 text-base"
+            >
+              Yuklab olish
+            </button>
+
+            {/* download all types dropdown wrapper */}
+            <div className="group relative">
+              <div className="py-3.5 px-4 bg-brand-gold-600 rounded-r-lg cursor-pointer">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="size-5 transition-transform group-hover:rotate-180"
+                >
+                  <path
+                    stroke="#2D3250"
+                    strokeWidth="2"
+                    d="M5 9L12 16L19 9"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              {/* download all types dropdown */}
+              <div className="hidden absolute min-w-max w-full top-full right-0 bg-white p-1.5 rounded-xl border border-brand-darkblue-300/15 group-hover:block">
+                <ul className="space-y-1.5">
+                  {/* svg download */}
+                  <li>
+                    <button
+                      onClick={() => downloadQrCode("svg")}
+                      className="flex items-center justify-between gap-5 w-52 shrink-0 p-3.5 py-2.5 rounded-lg transition-colors hover:bg-brand-darkblue-300/5"
+                    >
+                      <span className="text-sm">SVG</span>
+                      <img
+                        width={20}
+                        height={20}
+                        src={downloadIcon}
+                        alt="dowload icon"
+                        className="size-5"
+                      />
+                    </button>
+                  </li>
+
+                  {/* jpg download */}
+                  <li>
+                    <button
+                      onClick={() => downloadQrCode("jpg")}
+                      className="flex items-center justify-between gap-5 w-52 shrink-0 p-3.5 py-2.5 rounded-lg transition-colors hover:bg-brand-darkblue-300/5"
+                    >
+                      <span className="text-sm">JPG</span>
+                      <img
+                        width={20}
+                        height={20}
+                        src={downloadIcon}
+                        alt="dowload icon"
+                        className="size-5"
+                      />
+                    </button>
+                  </li>
+
+                  {/* png download */}
+                  <li>
+                    <button
+                      onClick={() => downloadQrCode("png")}
+                      className="flex items-center justify-between gap-5 w-52 shrink-0 p-3.5 py-2.5 rounded-lg transition-colors hover:bg-brand-darkblue-300/5"
+                    >
+                      <span className="text-sm">PNG</span>
+                      <img
+                        width={20}
+                        height={20}
+                        src={downloadIcon}
+                        alt="dowload icon"
+                        className="size-5"
+                      />
+                    </button>
+                  </li>
+
+                  {/* webp download */}
+                  <li>
+                    <button
+                      onClick={() => downloadQrCode("webp")}
+                      className="flex items-center justify-between gap-5 w-52 shrink-0 p-3.5 py-2.5 rounded-lg transition-colors hover:bg-brand-darkblue-300/5"
+                    >
+                      <span className="text-sm">WEBP</span>
+                      <img
+                        width={20}
+                        height={20}
+                        src={downloadIcon}
+                        alt="dowload icon"
+                        className="size-5"
+                      />
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* qr code generator options, collapses */}
-        <div className="max-w-96 max-w-2xls min-w-72 max-h-max overflow-y-auto scroll-primary-small w-full pb-5 rounded-bl-xl border-r border-brand-darkblue-300/15">
+        <div className="max-h-[512px] overflow-y-auto scroll-primary-small w-full pb-5 border-t border-b border-brand-darkblue-300/15 sm:max-h- sm:rounded-bl-xl sm:border-b-0 md:border-r md:border-t-0 md:max-w-96">
           {/* prompt */}
           <CollapsePanel
             open
@@ -148,7 +292,13 @@ const QrCodeGenerator = () => {
             <textarea
               id="prompt"
               maxLength={144}
-              onInput={(e) => setQrValue(e.target.value)}
+              onInput={(e) => {
+                if (e.target.value !== "") {
+                  setQrValue(e.target.value);
+                } else {
+                  setQrValue("https://ppmaker.uz");
+                }
+              }}
               placeholder="Bu yerga siz istagan matn yoki havolani kiriting..."
               className="w-full h-36 bg-brand-darkblue-300/[0.03] resize-none scroll-primary-small text-base placeholder:text-base"
             />
@@ -338,13 +488,13 @@ const QrCodeGenerator = () => {
           </CollapsePanel>
         </div>
 
-        {/* result & qr details */}
+        {/* result & ads &qr code cards */}
         <div className="w-full h-auto">
-          {/* current qr code */}
+          {/* current qr code & ads */}
           <div
             className={`${!openLatestQrCodesList ? "block h-full" : "hidden"}`}
           >
-            <div className="flex flex-col justify-between gap-5 w-full h-full lg:pl-5 lg:flex-row">
+            <div className="flex flex-col justify-between gap-5 top-24 w-full pb-5 sm:pb-0 sm:flex-row md:sticky md:flex-col lg:static lg:h-full lg:pl-5 lg:flex-row">
               {/* qr code */}
               <QrCode
                 size={240}
@@ -356,13 +506,13 @@ const QrCodeGenerator = () => {
                 cornersDotType={qrCornersDotType}
                 backgroundColor={qrBackgroundColor}
                 cornersDotColor={qrCornersDotColor}
-                className="sticky top-24 my-5 mx-auto"
                 cornersSquareType={qrCornersSquareType}
                 cornersSquareColor={qrCornersSquareColor}
+                className="lg:sticky top-24 mt-5 mx-auto lg:my-5"
               />
 
-              {/* qr code details wrapper */}
-              <div className="max-w-96 min-w-72 w-full h-full p-5 mx-auto lg:m-0 lg:border-l lg:border-brand-darkblue-300/15">
+              {/* ads wrapper */}
+              <div className="hidden max-w-96 min-w-72 w-full h-full p-5 mx-auto sm:block lg:m-0 lg:border-l lg:border-brand-darkblue-300/15">
                 <div className=" sticky top-24 space-y-5">
                   {/* ads */}
                   <aside className="w-full h-auto aspect-square">
@@ -508,7 +658,7 @@ const QrCodeGenerator = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
