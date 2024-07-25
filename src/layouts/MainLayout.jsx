@@ -8,12 +8,14 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <>
+    <div className="flex flex-col w-full h-screen">
       <Top />
       <Header />
-      <Outlet />
+      <main className="grow">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
