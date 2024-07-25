@@ -6,15 +6,60 @@
 
 @layer base {
   body {
-    @apply text-lg font-medium leading-6 font-Poppins text-brand-darkblue-700;
+    @apply bg-white text-lg font-medium leading-6 font-Poppins text-brand-darkblue-700;
+  }
+
+  h1 {
+    @apply text-2xl leading-normal font-bold text-brand-darkblue-700 xs:text-3xl sm:text-4xl;
   }
 
   h2 {
     @apply text-xl leading-normal font-bold text-brand-darkblue-700 xs:text-2xl sm:text-3xl;
   }
+
+  input,
+  textarea,
+  select {
+    @apply w-full py-2.5 px-3.5 border border-brand-darkblue-300/15 rounded-lg text-base outline-brand-violet-500 placeholder:font-normal placeholder:text-base sm:text-lg sm:placeholder:text-lg;
+  }
 }
 
 @layer components {
+  /* scrollbars */
+  /* primary */
+  .scroll-primary::-webkit-scrollbar-track {
+    @apply rounded-full bg-transparent;
+  }
+
+  .scroll-primary::-webkit-scrollbar {
+    @apply w-3 bg-transparent;
+  }
+
+  .scroll-primary::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-brand-violet-500/70;
+  }
+
+  .scroll-primary:hover::-webkit-scrollbar-thumb {
+    @apply bg-brand-violet-500;
+  }
+
+  /* primary small */
+  .scroll-primary-small::-webkit-scrollbar-track {
+    @apply rounded-full bg-transparent;
+  }
+
+  .scroll-primary-small::-webkit-scrollbar {
+    @apply w-2 bg-transparent;
+  }
+
+  .scroll-primary-small::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-brand-violet-500/70;
+  }
+
+  .scroll-primary-small:hover::-webkit-scrollbar-thumb {
+    @apply bg-brand-violet-500;
+  }
+
   /* buttons */
   .btn {
     @apply px-6 py-2.5 text-base xs:text-lg;
@@ -35,6 +80,25 @@
   /* divider */
   .divider {
     @apply w-full h-0.5 bg-brand-darkblue-300/5;
+  }
+
+  /* custom marquee */
+  .custom-marquee {
+    @apply block overflow-hidden;
+  }
+
+  @keyframes animation-marquee {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-100%);
+    }
+  }
+
+  .custom-marquee-text {
+    @apply truncate !translate-y-11;
+    animation: animation-marquee 1s infinite linear;
   }
 
   /* header */
@@ -136,6 +200,15 @@
 
   .active-faq-list-item .faq-list-item-icon {
     @apply rotate-180;
+  }
+
+  /* qr code */
+  .qr-code-page-nav-link {
+    @apply flex items-center justify-center w-full h-full transition-colors hover:bg-brand-violet-200;
+  }
+
+  .qr-code-page-nav-link.active {
+    @apply bg-brand-violet-200 border-b border-b-brand-violet-500;
   }
 }
 
