@@ -27,7 +27,7 @@ const CollapsePanel = ({ header, children, open = false, className = "" }) => {
       {/* panel header */}
       <button
         onClick={togglePanel}
-        className="flex items-center justify-between w-full p-5"
+        className="flex items-center justify-between w-full p-4 sm:p-5"
       >
         <span className="text-base">{header}</span>
 
@@ -51,7 +51,7 @@ const CollapsePanel = ({ header, children, open = false, className = "" }) => {
         }}
         className={`w-full overflow-hidden transition-[height] duration-200`}
       >
-        <div className="pt-0 p-5">{children}</div>
+        <div className="pt-1 p-4 sm:pt-0 sm:p-5">{children}</div>
       </div>
     </div>
   );

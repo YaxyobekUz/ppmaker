@@ -125,13 +125,13 @@ const QrCodeGenerator = () => {
     <>
       {/* page header, title wrapper */}
       <div className="flex items-center justify-between border-b">
-        <h1 className="line-clamp-1 ml-5 text-xl font-semibold">
+        <h1 className="line-clamp-1 ml-4 text-xl font-semibold sm:ml-5">
           QR-kod yaratish
         </h1>
 
         {/* toggle open latest qr codes list btn */}
         <button
-          className="shrink-0 px-5 py-4 text-base"
+          className="shrink-0 px-4 py-4 text-base sm:px-5"
           onClick={() => setOpenLatestQrCodesList((state) => !state)}
           title={
             openLatestQrCodesList ? "Show QR code" : "Last downloaded QR codes"
@@ -163,7 +163,7 @@ const QrCodeGenerator = () => {
       {/* page body */}
       <div className="flex flex-col-reverse w-full h-full md:flex-row">
         {/* responsive ads wrapper */}
-        <div className="space-y-5 p-5 sm:hidden">
+        <div className="space-y-4 p-4 sm:hidden">
           {/* ads */}
           <aside className="w-full h-auto aspect-square">
             <div className="flex items-center justify-center size-full bg-brand-darkblue-300/5 rounded-lg">
@@ -282,7 +282,7 @@ const QrCodeGenerator = () => {
         </div>
 
         {/* qr code generator options, collapses */}
-        <div className="max-h-[512px] overflow-y-auto scroll-primary-small w-full pb-5 border-t border-b border-brand-darkblue-300/15 sm:max-h- sm:rounded-bl-xl sm:border-b-0 md:border-r md:border-t-0 md:max-w-96">
+        <div className="w-full pb-5 border-t border-b border-brand-darkblue-300/15 sm:rounded-bl-xl sm:border-b-0 md:border-r md:border-t-0 md:max-w-96">
           {/* prompt */}
           <CollapsePanel
             open
