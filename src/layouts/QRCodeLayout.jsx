@@ -42,7 +42,7 @@ const QRCodeLayout = () => {
                 <li className="w-full h-11 border-r border-brand-darkblue-300/15 xs:w-20 xs:h-12">
                   <Tooltip title="QR-kodni skanerlash">
                     <NavLink
-                      to="/services/qr-code/scanner"
+                      to="/services/qr-code/scan"
                       aria-label="QR code scanner page link"
                       className="qr-code-page-nav-link"
                     >

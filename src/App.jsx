@@ -14,6 +14,7 @@ import QRCodeLayout from "./layouts/QRCodeLayout";
 // pages
 import Home from "./pages/Home";
 import Services from "./pages/Services";
+import QrCodeScanner from "./pages/QrCodeScanner";
 import QrCodeGenerator from "./pages/QrCodeGenerator";
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
 
           <Route path="qr-code" element={<QRCodeLayout />}>
             <Route index path="generate" element={<QrCodeGenerator />} />
+            <Route path="scan" element={<QrCodeScanner />} />
           </Route>
         </Route>
       </Route>
