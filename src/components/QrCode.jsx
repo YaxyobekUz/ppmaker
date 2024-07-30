@@ -8,83 +8,85 @@ import QRCodeStyling from "qr-code-styling";
 
 const QrCode = ({
   size = 144,
-  image = null,
   className = "",
-  color = "black",
-  type = "canvas",
-  shape = "square",
   download = false,
-  dotsType = "square",
-  dotsColor = "black",
-  cornersDotType = "square",
-  cornersDotColor = "black",
-  backgroundColor = "white",
-  cornersSquareColor = "black",
-  cornersSquareType = "square",
-  value = "https://ppmaker.uz",
+  options = {
+    type: "canvas",
+    image: null,
+    shape: "square",
+    data: "https://ppmaker.uz",
+    dotsOptions: {
+      type: "square",
+      color: "#2D3250",
+    },
+    cornersDotOptions: {
+      type: "square",
+      color: "#2D3250",
+    },
+    cornersSquareOptions: {
+      type: "square",
+      color: "#2D3250",
+    },
+    backgroundOptions: {
+      color: "#2D3250",
+    },
+    imageOptions: {
+      margin: 4,
+    },
+  },
 }) => {
   const qrCode = useRef(null);
   const qrContainerRef = useRef(null);
   const [loader, setLoader] = useState(true);
 
-  // set qr code
+  // display qr code
   useEffect(() => {
+    // add loader
     setLoader(true);
-    qrContainerRef.current.innerHTML = "";
 
-    // qr options
+    // set qr code options
+    qrContainerRef.current.innerHTML = "";
     qrCode.current = new QRCodeStyling({
-      type,
-      image,
-      shape,
-      data: value,
       width: size,
       height: size,
-      dotsOptions: {
-        type: dotsType,
-        color: dotsColor,
-      },
-      cornersDotOptions: {
-        type: cornersDotType,
-        color: cornersDotColor,
-      },
-      cornersSquareOptions: {
-        type: cornersSquareType,
-        color: cornersSquareColor,
-      },
-      backgroundOptions: {
-        color: backgroundColor,
-      },
-      imageOptions: {
-        margin: 4,
-      },
+      ...options,
     });
-
     qrCode.current.append(qrContainerRef.current);
 
     // remove loader
     setTimeout(() => setLoader(false), 200);
   }, [
     size,
-    type,
-    image,
-    value,
-    color,
-    shape,
-    dotsType,
-    dotsColor,
-    cornersDotType,
-    cornersDotColor,
-    backgroundColor,
-    cornersSquareType,
-    cornersSquareColor,
+    options.data,
+    options.type,
+    options.image,
+    options.shape,
+    options.dotsOptions.type,
+    options.dotsOptions.type,
+    options.dotsOptions.color,
+    options.dotsOptions.color,
+    options.cornersDotOptions.type,
+    options.backgroundOptions.color,
+    options.cornersDotOptions.color,
+    options.cornersSquareOptions.type,
+    options.cornersSquareOptions.color,
   ]);
 
   // download qr code
   useEffect(() => {
-    if (download) {
-      if (download.isApproved) {
-        qrCode.current.download({ extension: download.type });
+    const savedQrCodes = JSON.parse(localStorage.getItem("qrCodes"));
+    if (download && download.isApproved) {
+      // download qr code
+      qrCode.current.download({ extension: download.type });
+
+      // save new qr code to local storage
+      if (download.setLocaleStorage) {
+        if (savedQrCodes) {
+          const slicedQrCodes = [options, ...savedQrCodes].slice(0, 8);
+          localStorage.setItem("qrCodes", JSON.stringify(slicedQrCodes));
+        } else {
+          localStorage.setItem("qrCodes", JSON.stringify([options]));
+        }
       }
     }
   }, [download]);
