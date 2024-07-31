@@ -679,55 +679,53 @@ const QrCodeGenerator = () => {
             </div>
           </div>
 
-          {/* qr code cards */}
-          {latestDownloadQrCodes.length > 0 ? (
-            <ul
-              className={`${
-                openLatestQrCodesList ? "flex" : "hidden"
-              } flex-wrap justify-center gap-5 grow p-4 sm:p-5`}
-            >
-              {latestDownloadQrCodes.map((qr, index) => {
-                return (
-                  <li
-                    key={index}
-                    className="flex flex-col items-center w-40 h-56 bg-white py-2 rounded-lg border border-brand-darkblue-300/15 group"
-                  >
-                    <div className="flex items-center justify-center relative overflow-hidden mb-2.5">
-                      <QrCode size={140} options={qr} />
+          {/* latest download qr codes card */}
+          <div className={openLatestQrCodesList ? "block" : "hidden"}>
+            {latestDownloadQrCodes.length > 0 ? (
+              <ul className="flex flex-wrap justify-center gap-5 grow p-4 sm:p-5">
+                {latestDownloadQrCodes.map((qr, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className="flex flex-col items-center w-40 h-56 bg-white py-2 rounded-lg border border-brand-darkblue-300/15 group"
+                    >
+                      <div className="flex items-center justify-center relative overflow-hidden mb-2.5">
+                        <QrCode size={140} options={qr} />
 
-                      {/* download qr code btn */}
-                      <button
-                        onClick={() => downloadQrCode("png", qr, false)}
-                        className="absolute z-1 scale-0 bg-white p-2 rounded-full transition-transform duration-500 group-hover:scale-100"
-                      >
-                        <img
-                          width={24}
-                          height={24}
-                          className="size-6"
-                          src={downloadIcon}
-                          alt="download qr code icon"
-                        />
-                      </button>
+                        {/* download qr code btn */}
+                        <button
+                          onClick={() => downloadQrCode("png", qr, false)}
+                          className="absolute z-1 scale-0 bg-white p-2 rounded-full transition-transform duration-500 group-hover:scale-100"
+                        >
+                          <img
+                            width={24}
+                            height={24}
+                            className="size-6"
+                            src={downloadIcon}
+                            alt="download qr code icon"
+                          />
+                        </button>
 
-                      {/* overlay */}
-                      <div className="absolute inset-0 w-full h-full scale-0 bg-black/15 backdrop-blur-xl rounded-lg transition-transform group-hover:scale-100"></div>
-                    </div>
+                        {/* overlay */}
+                        <div className="absolute inset-0 w-full h-full scale-0 bg-black/15 backdrop-blur-xl rounded-lg transition-transform group-hover:scale-100"></div>
+                      </div>
 
-                    {/* qr code name */}
-                    <div className="w-full px-2.5">
-                      <h3 className="w-full line-clamp-2 text-base text-center">
-                        {qr.data}
-                      </h3>
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <strong className="p-4 sm:p-5">
-              Hali hech qanday QR-kod yuklab olmadingiz!
-            </strong>
-          )}
+                      {/* qr code name */}
+                      <div className="w-full px-2.5">
+                        <h3 className="w-full line-clamp-2 text-base text-center">
+                          {qr.data}
+                        </h3>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <strong className="inline-block font-medium opacity-70 m-4 text-base sm:text-lg sm:m-5">
+                Hali hech qanday QR-kod yuklab olmadingiz!
+              </strong>
+            )}
+          </div>
         </div>
       </div>
 

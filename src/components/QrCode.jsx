@@ -80,7 +80,7 @@ const QrCode = ({
       qrCode.current.download({ extension: download.type });
 
       // save new qr code to local storage
-      if (download.setLocaleStorage) {
+      if (download.setLocaleStorage && !options.image) {
         if (savedQrCodes) {
           const slicedQrCodes = [options, ...savedQrCodes].slice(0, 8);
           localStorage.setItem("qrCodes", JSON.stringify(slicedQrCodes));
