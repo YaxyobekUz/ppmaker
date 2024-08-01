@@ -189,6 +189,15 @@ const Header = () => {
                             Maxsus profil rasmini yaratish
                           </Link>
                         </li>
+
+                        <li>
+                          <Link
+                            className="dropdown-item"
+                            to="/services/qr-code/generator"
+                          >
+                            QR-kod yaratish
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </li>
@@ -401,10 +410,19 @@ const Header = () => {
 
                     <li>
                       <Link
-                        className="header-responsive-navbar-menu-item"
                         to="/services/create/special-profile-picture"
+                        className="header-responsive-navbar-menu-item"
                       >
                         Maxsus profil rasmini yaratish
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link
+                        to="/services/qr-code/generator"
+                        className="header-responsive-navbar-menu-item"
+                      >
+                        QR-kod yaratish
                       </Link>
                     </li>
                   </ul>
