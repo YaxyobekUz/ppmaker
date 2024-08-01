@@ -1,0 +1,62 @@
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 100px;
+  transition: background-color 0.3s ease;
+}
+
+@keyframes dot1 {
+  0%,
+  33%,
+  100% {
+    opacity: 0.5;
+  }
+  27% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot2 {
+  0%,
+  33%,
+  66%,
+  100% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot3 {
+  0%,
+  66%,
+  100% {
+    opacity: 0.5;
+  }
+  93% {
+    opacity: 1;
+  }
+}
+
+.dot:nth-child(1) {
+  animation: dot1 1s ease infinite;
+}
+
+.dot:nth-child(2) {
+  animation: dot2 1s ease infinite;
+}
+
+.dot:nth-child(3) {
+  animation: dot3 1s ease infinite;
+}
