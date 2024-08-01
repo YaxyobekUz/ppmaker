@@ -1,6 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router";
 
+// toaster
+import { Toaster } from "react-hot-toast";
+
 // components
 import Top from "../components/Top";
 import Header from "../components/Header";
@@ -15,6 +18,9 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <Footer />
+
+      {/* toaster notification container */}
+      <Toaster />
     </div>
   );
 };
