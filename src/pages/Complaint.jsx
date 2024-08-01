@@ -1,9 +1,63 @@
 import React, { useState } from "react";
 
+// axios
+import axios from "axios";
+
+// notification
+import { notification } from "../notifications";
+
+// components
+import DotsLoader from "../components/DotsLoader";
+
 const Complaint = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [loader, setLoader] = useState(false);
   const [complaintMsg, setComplaintMsg] = useState("");
+
+  // api required keys
+  const chatId = -1002236349704;
+  const telegramBotId = "7455763005:AAEJZ-cm9bM0fDspetka87yc3xjfdy1eRw0";
+  const url = "https://api.telegram.org/bot" + telegramBotId + "/sendMessage";
+
+  // check input values
+  const checkValues = (valuesArr) => {
+    return valuesArr.every((value) => value.trim() !== "");
+  };
+
+  // submit a complaint message
+  const submitComplaint = (e) => {
+    e.preventDefault();
+
+    if (checkValues([name, email, complaintMsg])) {
+      // add loader
+      setLoader(true);
+
+      // message
+      const message = `👤 Ismi: ${name} \n🔑 Bog'lanish: ${email} \n✉️ Izoh: ${complaintMsg}`;
+
+      // form data
+      const formData = {
+        chat_id: chatId,
+        text: message,
+      };
+
+      // send request
+      axios
+        .post(url, formData)
+        .then(() => notification("So'rov muvaffaqiyatli yuborildi!"))
+        .catch(() => notification("Nimadir xato ketdi!"))
+        .finally(() => {
+          // remove loader
+          setLoader(false);
+
+          // remove input values
+          setName("");
+          setEmail("");
+          setComplaintMsg("");
+        });
+    } else notification("Ma'lumotlar to'ldirilmagan");
+  };
 
   return (
     <>
@@ -17,7 +71,10 @@ const Complaint = () => {
       {/* page body */}
       <div className="flex flex-col gap-4 p-4 sm:gap-5 sm:p-5 md:flex-row">
         {/* submit form */}
-        <form className="grow col-span-2 space-y-4 sm:space-y-5">
+        <form
+          onSubmit={submitComplaint}
+          className="grow col-span-2 space-y-4 sm:space-y-5"
+        >
           {/* name */}
           <div className="space-y-2.5 sm:space-y-3.5">
             <label htmlFor="name1" className="text-base">
@@ -25,6 +82,7 @@ const Complaint = () => {
             </label>
 
             <input
+              required
               id="name1"
               name="name"
               type="text"
@@ -45,6 +103,7 @@ const Complaint = () => {
             </label>
 
             <input
+              required
               id="email"
               type="text"
               name="email"
@@ -65,6 +124,7 @@ const Complaint = () => {
             </label>
 
             <textarea
+              required
               id="complaint"
               name="complaint"
               maxLength={1200}
@@ -77,8 +137,14 @@ const Complaint = () => {
           </div>
 
           {/* submit btn */}
-          <button className="btn-primary w-full rounded-lg text-base xs:w-56 sm:rounded-xl">
-            Yuborish
+          <button
+            type="submit"
+            disabled={loader}
+            title={loader ? "Loading..." : "Submit"}
+            aria-label={loader ? "Loading..." : "Submit"}
+            className="btn-primary w-full rounded-lg text-base xs:w-56 sm:rounded-xl"
+          >
+            {!loader ? "Yuborish" : <DotsLoader className="h-6" />}
           </button>
         </form>
 
@@ -107,4 +173,3 @@ const Complaint = () => {
 };
 
 export default Complaint;
-  
