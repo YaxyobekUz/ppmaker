@@ -26,6 +26,10 @@ export default {
         },
       },
 
+      backgroundImage: {
+        "morpheus-den": "linear-gradient(to top right, #30cfd0 0%, #330867 100%)",
+      },
+
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],
       },
