@@ -13,6 +13,7 @@ import QRCodeLayout from "./layouts/QRCodeLayout";
 
 // pages
 import Home from "./pages/Home";
+import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Complaint from "./pages/Complaint";
 import QrCodeScanner from "./pages/QrCodeScanner";
@@ -23,10 +24,9 @@ const App = () => {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
-
+        <Route path="contact" element={<Contact />} />
         <Route path="services" element={<Outlet />}>
           <Route index element={<Services />} />
-
           <Route path="qr-code" element={<QRCodeLayout />}>
             <Route index path="generator" element={<QrCodeGenerator />} />
             <Route path="scanner" element={<QrCodeScanner />} />
