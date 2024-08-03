@@ -17,10 +17,20 @@
     @apply text-xl leading-normal font-bold text-brand-darkblue-700 xs:text-2xl sm:text-3xl;
   }
 
+  /* form elements */
+  label,
+  label * {
+    @apply text-base;
+  }
+
   input,
   textarea,
   select {
-    @apply w-full py-2.5 px-3.5 border border-brand-darkblue-300/15 rounded-lg text-base outline-brand-violet-500 placeholder:font-normal placeholder:text-base sm:text-lg sm:placeholder:text-lg;
+    @apply w-full bg-white py-2.5 px-3.5 border border-brand-darkblue-300/15 rounded-lg text-base outline-brand-violet-500 placeholder:font-normal placeholder:text-base;
+  }
+
+  textarea {
+    @apply scroll-primary-small min-h-40 max-h-96;
   }
 }
 
