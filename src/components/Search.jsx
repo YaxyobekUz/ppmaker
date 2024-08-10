@@ -1,57 +1,97 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 
 // lodash
 import { debounce } from "lodash";
 
+// components
+import SpinLoader from "./SpinLoader";
+
 // images
 import searchIcon from "../assets/images/icons/search.svg";
 
-const Search = ({ className = "", onChange = false }) => {
-  const [query, setQuery] = useState("");
-  const [loader, setLoader] = useState(false);
+const Search = ({ className = "", onChange, placeholder = "Qidirish..." }) => {
+  const searchInputRef = useRef(null);
+  const [state, setState] = useState({ query: "", loading: false });
 
-  // set value
-  const handleSearch = useCallback(
-    debounce((value) => {
-      onChange(value);
-    }, 500),
-    []
+  // set input value
+  const handleSearch = useMemo(
+    () =>
+      debounce((value) => {
+        if (onChange) {
+          onChange(value);
+        }
+        setState((prevState) => ({ ...prevState, loading: false }));
+      }, 500),
+    [onChange]
   );
 
   // handle change
   const handleChange = (e) => {
-    if (onChange) {
-      if (!loader) setLoader(true);
-      handleSearch(e.target.value.trim().toLowerCase());
-    }
-    setQuery(e.target.value);
+    const value = e.target.value.trim().toLowerCase();
+    setState({ query: e.target.value, loading: true });
+    handleSearch(value);
   };
+
+  // handle focus
+  useEffect(() => {
+    const handleKeydown = (e) => {
+      if (e.ctrlKey && e.key === "/") {
+        searchInputRef.current.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeydown);
+    return () => {
+      document.removeEventListener("keydown", handleKeydown);
+    };
+  }, []);
+
+  const { query, loading } = state;
 
   return (
     <div
       rel="search"
       className={`flex items-center grow relative ${className}`}
     >
-      {/* search icon */}
-      <img
-        width={20}
-        height={20}
-        src={searchIcon}
-        alt="ppmaker search icon"
-        aria-label="ppmaker search icon"
-        className="absolute left-3.5 size-6"
-      />
+      {/* icon */}
+      <div className="absolute left-3.5 size-6">
+        {loading ? (
+          <SpinLoader />
+        ) : (
+          <img
+            width={24}
+            height={24}
+            src={searchIcon}
+            alt="ppmaker search icon"
+            aria-label="ppmaker search icon"
+          />
+        )}
+      </div>
 
-      {/* search input */}
+      {/* input */}
       <input
         name="search"
         type="search"
         value={query}
         title="search"
+        maxLength={240}
+        ref={searchInputRef}
         onChange={handleChange}
-        placeholder="Rasmlarni qidirish..."
+        placeholder={placeholder}
         className="pl-12 outline-offset-0"
       />
+
+      {/* bar */}
+      <kbd
+        className={`${
+          query.length > 0 ? "hidden" : ""
+        } absolute right-3.5 opacity-70 text-sm font-Poppins max-sm:!hidden`}
+      >
+        <abbr title="Control" className="no-underline">
+          Ctrl +
+        </abbr>
+        <span> /</span>
+      </kbd>
     </div>
   );
 };
