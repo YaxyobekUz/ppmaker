@@ -56,7 +56,7 @@ const Home = () => {
                   disableOnInteraction: true,
                 }}
                 modules={[Navigation, Pagination, Autoplay]}
-                className="homepage-hero-main-swiper default-pagination w-full h-full rounded-lg sm:rounded-xl lg:h-96"
+                className="swiper-default-buttons default-pagination w-full h-full rounded-lg sm:rounded-xl lg:h-96"
               >
                 {homepageHeroSlides.map((slide) => {
                   const [loader, setLoader] = useState(true);

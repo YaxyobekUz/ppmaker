@@ -31,7 +31,7 @@ const Card = ({ card }) => {
             alt="boy image"
             src={card.image.original.src}
             onLoad={() => setLoader((state) => !state)}
-            className="smooth-opening w-full h-full rounded-lg transition-transform duration-200 group-hover:scale-105 sm:rounded-xl"
+            className="smooth-opening w-full h-full rounded-lg transition-transform duration-500 group-hover:scale-105 sm:rounded-xl"
           />
 
           {/* card actions wrapper */}
