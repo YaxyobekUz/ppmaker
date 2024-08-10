@@ -220,6 +220,18 @@
   .qr-code-page-nav-link.active {
     @apply bg-brand-violet-200 border-b border-b-brand-violet-500;
   }
+
+  /* profile page */
+  .profile-images-page-nav-link {
+    @apply flex items-end relative w-full h-64 overflow-hidden bg-brand-darkblue-300/10 bg-top bg-no-repeat p-4 rounded-lg xs:h-80 xs:rounded-xl sm:rounded-2xl sm:p-5;
+    background-size: 105%;
+    transition: box-shadow 0.3s ease, background-size 0.3s ease;
+  }
+
+  .profile-images-page-nav-link.active {
+    background-size: 100%;
+    box-shadow: inset 0px 0px 0px 4px #7a08fa;
+  }
 }
 
 @layer utilities {

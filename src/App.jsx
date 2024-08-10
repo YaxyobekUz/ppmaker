@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import Services from "./pages/Services";
 import Complaint from "./pages/Complaint";
 import QrCodeScanner from "./pages/QrCodeScanner";
+import ProfileImages from "./pages/ProfileImages";
 import QrCodeGenerator from "./pages/QrCodeGenerator";
 
 const App = () => {
@@ -31,6 +32,14 @@ const App = () => {
             <Route index path="generator" element={<QrCodeGenerator />} />
             <Route path="scanner" element={<QrCodeScanner />} />
             <Route path="complaint" element={<Complaint />} />
+          </Route>
+
+          <Route path="profile-images" element={<Outlet />}>
+            <Route
+              index
+              path=":profileImagesType"
+              element={<ProfileImages />}
+            />
           </Route>
         </Route>
       </Route>
