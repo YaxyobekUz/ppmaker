@@ -21,11 +21,11 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { profileImagesForBoysData } from "../data/profile-images-for-boys";
 
 // images
-import searchIcon from "../assets/images/icons/search.svg";
 import toonBoyBg from "../assets/images/others/toon-boy-bg.jpg";
 import toonGirlBg from "../assets/images/others/toon-girl-bg.jpg";
 import allApplicationBg from "../assets/images/others/all-application-bg.jpg";
 import toonPubgGameCharactersBg from "../assets/images/others/toon-pubg-game-characters-bg.jpg";
+import Search from "../components/Search";
 
 const ProfileImages = () => {
   const { profileImagesType } = useParams();
@@ -211,25 +211,7 @@ const ProfileImages = () => {
           {/* search & filter */}
           <div className="flex flex-col gap-5 xs:flex-row">
             {/* search */}
-            <div className="flex items-center grow relative">
-              {/* search icon */}
-              <img
-                width={20}
-                height={20}
-                src={searchIcon}
-                alt="search icon"
-                className="absolute left-3.5 size-6"
-              />
-
-              {/* search input */}
-              <input
-                id="search"
-                name="search"
-                type="search"
-                placeholder="Rasmlarni qidirish..."
-                className="pl-12 outline-offset-0"
-              />
-            </div>
+            <Search />
 
             {/* image leveldal */}
             <Select
