@@ -146,14 +146,42 @@ const Home = () => {
           </div>
 
           {/* section body */}
-          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <Swiper
+            navigation={true}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              425: {
+                spaceBetween: 20,
+                slidesPerView: 2,
+              },
+              768: {
+                spaceBetween: 20,
+                slidesPerView: 3,
+              },
+              1024: {
+                spaceBetween: 20,
+                slidesPerView: 4,
+              },
+            }}
+            autoplay={
+              window.innerWidth <= 768
+                ? { delay: 4500, pauseOnMouseEnter: true }
+                : false
+            }
+            modules={[Navigation, Autoplay]}
+            className="swiper-default-buttons rounded-xl"
+          >
             {services.slice(0, 4).map((service) => (
-              <li key={service.id} className="w-full h-auto aspect-[59/80]">
+              <SwiperSlide
+                key={service.id}
+                className="w-full h-auto aspect-[59/80]"
+              >
                 <Link
                   to={service.link}
                   title={service.name}
                   style={{ backgroundImage: `url(${service.image})` }}
-                  className="flex items-start flex-col justify-between relative w-full h-full overflow-hidden bg-brand-darkblue-300/10 bg-cover bg-center bg-no-repeat p-2.5 rounded-lg xs:p-3.5 sm:rounded-xl sm:p-5"
+                  className="flex items-start flex-col justify-between relative w-full h-full overflow-hidden bg-brand-darkblue-300/10 bg-cover bg-center bg-no-repeat p-4 rounded-xl sm:p-5"
                 >
                   {/* number of images badge */}
                   <div
@@ -174,16 +202,16 @@ const Home = () => {
                   </div>
 
                   {/* title */}
-                  <h3 className="z-1 text-base leading-5 font-semibold text-white xs:leading-normal xs:text-lg sm:text-xl">
+                  <h3 className="z-1 text-lg leading-5 font-semibold text-white xs:text-xl">
                     {service.title}
                   </h3>
 
                   {/* shadow */}
                   <div className="card-shadow"></div>
                 </Link>
-              </li>
+              </SwiperSlide>
             ))}
-          </ul>
+          </Swiper>
 
           <Link to="/services" className="btn-secondary">
             <span>Barcha xizmatlar</span>
@@ -245,7 +273,7 @@ const Home = () => {
           </div>
 
           {/* profile images list */}
-          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {profileImagesForBoysData.map((card) => (
               <Card key={card.id} card={card} />
             ))}
@@ -311,7 +339,7 @@ const Home = () => {
           </div>
 
           {/* profile images list */}
-          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {profileImagesForBoysData.map((card) => (
               <Card key={card.id} card={card} />
             ))}
@@ -374,7 +402,7 @@ const Home = () => {
           </div>
 
           {/* profile images list */}
-          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {profileImagesForBoysData.map((card) => (
               <Card key={card.id} card={card} />
             ))}
