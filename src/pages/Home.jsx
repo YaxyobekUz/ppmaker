@@ -56,7 +56,7 @@ const Home = () => {
                   disableOnInteraction: true,
                 }}
                 modules={[Navigation, Pagination, Autoplay]}
-                className="swiper-default-buttons default-pagination w-full h-full rounded-lg sm:rounded-xl lg:h-96"
+                className="swiper-default-buttons default-pagination w-full h-full rounded-xl lg:h-96"
               >
                 {homepageHeroSlides.map((slide) => {
                   const [loader, setLoader] = useState(true);
@@ -75,7 +75,7 @@ const Home = () => {
                           onLoad={() => setLoader(false)}
                           className={`${
                             !loader ? "block" : "hidden"
-                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-lg sm:rounded-xl`}
+                          } w-full h-full bg-brand-darkblue-300/10 object-cover object-center rounded-xl`}
                         />
 
                         {/* loader */}
