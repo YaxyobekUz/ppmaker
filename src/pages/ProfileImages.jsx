@@ -10,16 +10,15 @@ import Card from "../components/Card";
 import Search from "../components/Search";
 import Breadcrumb from "../components/Breadcrumb";
 
+// data
+import { profileImagesData } from "../data/profile-images";
+
 // swiper
 import "swiper/css";
 import "../css/swiper.css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-
-// data
-import { profileImagesForBoysData } from "../data/profile-images-for-boys";
+import { Autoplay, Navigation } from "swiper/modules";
 
 // images
 import toonBoyBg from "../assets/images/others/toon-boy-bg.jpg";
@@ -31,7 +30,7 @@ const ProfileImages = () => {
   const { profileImagesType } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [imagesBadgeValue, setImagesBadgeValue] = useState("all");
-  const [profileImages, setProfileImages] = useState(profileImagesForBoysData);
+  const [profileImages, setProfileImages] = useState(profileImagesData);
   const [breadcrumbItems, setBreadcrumbItems] = useState([
     { name: "Xizmatlar", href: "services" },
     { name: "Profil rasmlari", href: "services/profile-images/all" },
@@ -95,7 +94,7 @@ const ProfileImages = () => {
 
   // filter profile images by search, level & type
   useEffect(() => {
-    const filteredImages = profileImagesForBoysData.filter((profileImage) => {
+    const filteredImages = profileImagesData.filter((profileImage) => {
       // filter image by search
       const filterImageBySearch = profileImage.title
         .toLowerCase()
@@ -167,7 +166,7 @@ const ProfileImages = () => {
                   spaceBetween: 20,
                 },
               }}
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Navigation, Autoplay]}
               className="swiper-default-buttons rounded-lg sm:rounded-2xl"
             >
               {/* item 1 */}
