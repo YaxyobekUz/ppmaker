@@ -30,6 +30,7 @@ import toonPubgGameCharactersBg from "../assets/images/others/toon-pubg-game-cha
 const ProfileImages = () => {
   const { profileImagesType } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
+  const [imagesBadgeValue, setImagesBadgeValue] = useState("all");
   const [profileImages, setProfileImages] = useState(profileImagesForBoysData);
   const [breadcrumbItems, setBreadcrumbItems] = useState([
     { name: "Xizmatlar", href: "services" },
@@ -64,10 +65,6 @@ const ProfileImages = () => {
     }
   }, [profileImagesType]);
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
   // select options
   const selectOptions = [
     {
@@ -98,37 +95,59 @@ const ProfileImages = () => {
 
   // filter profile images by search, level & type
   useEffect(() => {
-    if (searchQuery) {
-      const filteredImages = profileImagesForBoysData
-        .filter((profileImage) => {
-          return profileImage.title.toLowerCase().includes(searchQuery);
-        })
-        .sort((a, b) => {
-          const indexA = a.title.toLowerCase().indexOf(searchQuery);
-          const indexB = b.title.toLowerCase().indexOf(searchQuery);
+    const filteredImages = profileImagesForBoysData.filter((profileImage) => {
+      // filter image by search
+      const filterImageBySearch = profileImage.title
+        .toLowerCase()
+        .includes(searchQuery);
 
-          return indexA - indexB;
-        });
+      // filter image by badge
+      const filterImageByBadge = () => {
+        if (imagesBadgeValue.toLowerCase() === "all") {
+          return true;
+        } else {
+          return profileImage.badges.some(
+            (badge) =>
+              badge.value.toLowerCase() === imagesBadgeValue.toLowerCase()
+          );
+        }
+      };
 
-      setProfileImages(filteredImages);
-    } else setProfileImages(profileImagesForBoysData);
-  }, [searchQuery]);
+      // filter image by type
+      const filterImageByType = () => {
+        if (
+          profileImagesType !== "for-boys" &&
+          profileImagesType !== "for-girls" &&
+          profileImagesType !== "for-games"
+        ) {
+          return true;
+        } else {
+          return profileImage.type.toLowerCase() === profileImagesType;
+        }
+      };
+
+      return filterImageBySearch && filterImageByBadge() && filterImageByType();
+    });
+
+    // set profile images
+    setProfileImages(filteredImages);
+  }, [searchQuery, imagesBadgeValue, profileImagesType]);
 
   return (
     <>
       {/* breadcrumb */}
-      <Breadcrumb className="mb-10" items={breadcrumbItems} />
+      <Breadcrumb className="mb-8 sm:mb-10" items={breadcrumbItems} />
 
       {/* main */}
       <div className="pb-12 sm:pb-16">
-        <div className="container section-content">
+        <div className="container">
           {/* title */}
-          <div className="section-header">
+          <div className="section-header mb-8 sm:mb-10">
             <h1>Profil rasmlari</h1>
           </div>
 
           {/* nav link cards */}
-          <nav>
+          <nav className="mb-3 sm:mb-5">
             <Swiper
               navigation={true}
               spaceBetween={16}
@@ -228,27 +247,24 @@ const ProfileImages = () => {
           </nav>
 
           {/* search & filter */}
-          <div className="flex flex-col gap-5 xs:flex-row">
+          <div className="flex flex-col gap-5 sticky top-[68px] z-1 bg-white py-5 mb-3 xs:top-[72px] xs:flex-row sm:mb-5  lg:top-20">
             {/* search */}
             <Search
               placeholder="Rasmlarni qidirish..."
               onChange={(value) => setSearchQuery(value)}
             />
 
-            {/* image leveldal */}
+            {/* images badge select */}
             <Select
               defaultValue="all"
-              className="!w-full xs:!w-auto"
-              style={{
-                width: 120,
-              }}
-              onChange={handleChange}
               options={selectOptions}
+              className="!w-full xs:!w-auto"
+              onChange={(value) => setImagesBadgeValue(value)}
             />
           </div>
 
           {/* profile images list */}
-          <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+          <ul className="grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {profileImages.map((card) => (
               <Card key={card.id} card={card} />
             ))}
