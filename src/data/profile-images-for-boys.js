@@ -4,6 +4,7 @@ import teshavoyImg from "../assets/images/profile-images-for-boys/cute-cartoon-b
 export const profileImagesForBoysData = [
   {
     id: 0,
+    type: "for-boys",
     title: "Teshavoy chiroyli bola",
     image: {
       name: "Teshavoy is a beautiful boy",
@@ -29,13 +30,14 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Ajoyib", value: "wonderful" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
   {
     id: 1,
-    title: "Teshavoy chiroyli bola",
+    type: "for-games",
+    title: "Teshavoy chiroyli bola 1",
     image: {
       name: "Teshavoy is a beautiful boy",
       template: {
@@ -60,13 +62,14 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Yaxshi", value: "normal" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
   {
     id: 2,
-    title: "Teshavoy chiroyli bola",
+    type: "for-games",
+    title: "Teshavoy chiroyli bola 2",
     image: {
       name: "Teshavoy is a beautiful boy",
       template: {
@@ -91,13 +94,14 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Yaxshi", value: "normal" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
   {
     id: 3,
-    title: "Teshavoy chiroyli bola",
+    type: "for-girls",
+    title: "Teshavoy chiroyli bola 3",
     image: {
       name: "Teshavoy is a beautiful boy",
       template: {
@@ -128,6 +132,7 @@ export const profileImagesForBoysData = [
   },
   {
     id: 4,
+    type: "for-boys",
     title: "Teshavoy chiroyli bola",
     image: {
       name: "Teshavoy is a beautiful boy",
@@ -159,6 +164,7 @@ export const profileImagesForBoysData = [
   },
   {
     id: 5,
+    type: "for-boys",
     title: "Teshavoy chiroyli bola",
     image: {
       name: "Teshavoy is a beautiful boy",
@@ -184,13 +190,14 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Yaxshi", value: "normal" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
   {
     id: 6,
-    title: "Teshavoy chiroyli bola",
+    type: "for-boys",
+    title: "T1eshavoy chiroyli bola",
     image: {
       name: "Teshavoy is a beautiful boy",
       template: {
@@ -215,13 +222,14 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Yaxshi", value: "normal" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
   {
     id: 7,
-    title: "Teshavoy chiroyli bola",
+    type: "for-boys",
+    title: "1Teshavoy chiroyli bola",
     image: {
       name: "Teshavoy is a beautiful boy",
       template: {
@@ -246,7 +254,7 @@ export const profileImagesForBoysData = [
     ],
     badges: [
       { id: 0, label: "Yaxshi", value: "normal" },
-      { id: 1, label: "Trendda", value: "Trending" },
+      { id: 1, label: "Trendda", value: "trending" },
     ],
     isArchived: false,
   },
