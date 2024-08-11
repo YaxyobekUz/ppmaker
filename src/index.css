@@ -113,7 +113,7 @@
 
   /* header */
   .header-nav-link {
-    @apply flex items-center justify-normal gap-2 relative py-3 lg:justify-center;
+    @apply flex items-center justify-normal gap-2 relative py-3 text-base sm:text-lg lg:justify-center;
   }
 
   .header-nav-link.active {
@@ -145,7 +145,7 @@
 
   /* header responsive navbar menu item */
   .header-responsive-navbar-menu-item {
-    @apply flex items-center gap-2 relative w-full py-3;
+    @apply flex items-center gap-2 relative w-full py-3 text-base sm:text-lg;
   }
 
   .header-responsive-navbar-menu-item::before {

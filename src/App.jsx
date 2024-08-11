@@ -34,13 +34,11 @@ const App = () => {
             <Route path="complaint" element={<Complaint />} />
           </Route>
 
-          <Route path="profile-images" element={<Outlet />}>
-            <Route
-              index
-              path=":profileImagesType"
-              element={<ProfileImages />}
-            />
-          </Route>
+          <Route
+            index
+            path="profile-images/:profileImagesType"
+            element={<ProfileImages />}
+          />
         </Route>
       </Route>
     )
