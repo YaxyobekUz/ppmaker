@@ -28,7 +28,7 @@ Loyiha ReactJS + Vite texnologiyalari yordamida ishlab chiqilgan.
 5. Terminalda ko'rsatilgan havola orqali brauzer yordamida loyihani ko'ring!
 
 
-# Qo'shimcha Ma'lumotlar
+## Qo'shimcha Ma'lumotlar
 
 Agar hali ham loyihani o'rnata olmasangiz, quyidagi manbalardan foydalanishingiz mumkin:
 
