@@ -10,10 +10,18 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 const MainLayout = () => {
-  // scroll to top
   const location = useLocation();
+  const paths = location.pathname.split("/").filter((i) => i !== "");
+
+  // scroll to top
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0,behavior:"smooth" });
+    const scrollToTop = () =>
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+    // enable scroll to top
+    if (paths[0] !== "services" || paths[1] !== "profile-images") {
+      scrollToTop();
+    }
   }, [location]);
 
   return (
