@@ -14,49 +14,12 @@ const Header = () => {
   const [openResponsiveNavbar, setOpenResponsiveNavbar] = useState(false);
   const [openResponsiveNavbarItemMenu, setOpenResponsiveNavbarItemMenu] =
     useState(false);
-  const [responsiveNavbarStyles, setResponsiveNavbarStyles] = useState({
-    display: "none",
-    opacity: 0,
-  });
 
   // close responsive navbar modal function
   const closeResponsiveNavbar = () => {
     setOpenResponsiveNavbar(false);
     setOpenResponsiveNavbarItemMenu(false);
   };
-
-  // change responsive navbar styles with animation
-  useEffect(() => {
-    if (openResponsiveNavbar) {
-      setResponsiveNavbarStyles({
-        display: "block",
-        opacity: 0,
-      });
-
-      if (openResponsiveNavbar) {
-        setTimeout(() => {
-          setResponsiveNavbarStyles({
-            display: "block",
-            opacity: 1,
-          });
-        }, 100);
-      }
-    } else {
-      setResponsiveNavbarStyles({
-        display: "block",
-        opacity: 0,
-      });
-
-      if (!openResponsiveNavbar) {
-        setTimeout(() => {
-          setResponsiveNavbarStyles({
-            display: "none",
-            opacity: 0,
-          });
-        }, 100);
-      }
-    }
-  }, [openResponsiveNavbar]);
 
   // close responsive navbar modal with esacpe key
   useEffect(() => {
@@ -128,8 +91,13 @@ const Header = () => {
                     <div className="dropdown-content group-hover:block">
                       <ul className="space-y-1">
                         <li className="group/item relative">
-                          <div className="dropdown-item group-hover/item:bg-brand-darkblue-300/5">
-                            <span>Profil rasmini yaratish</span>
+                          <Link
+                            to="/services/profile-images/all"
+                            className="dropdown-item group-hover/item:bg-brand-darkblue-300/5"
+                          >
+                            <span>Profil rasmlari</span>
+
+                            {/* arrow down icon */}
                             <img
                               width={16}
                               height={16}
@@ -137,7 +105,7 @@ const Header = () => {
                               alt="down arrow icon"
                               className="size-4 -rotate-90"
                             />
-                          </div>
+                          </Link>
 
                           {/* dropdown item dropdown */}
                           <div className="dropdown-content !left-full !top-0  group-hover/item:block">
@@ -145,7 +113,7 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  to="/services/create/profile-picture/for-boys/1"
+                                  to="/services/profile-images/for-boys"
                                 >
                                   Bollar uchun
                                 </Link>
@@ -154,7 +122,7 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  to="/services/create/profile-picture/for-girls/1"
+                                  to="/services/profile-images/for-girls"
                                 >
                                   Qizlar uchun
                                 </Link>
@@ -163,7 +131,7 @@ const Header = () => {
                               <li>
                                 <Link
                                   className="dropdown-item"
-                                  to="/services/create/profile-picture/for-games/1"
+                                  to="/services/profile-images/for-games"
                                 >
                                   O'yinlar uchun
                                 </Link>
@@ -222,8 +190,8 @@ const Header = () => {
               <div className="flex items-center">
                 {/* open search box btn */}
                 <button
-                  className="p-2 mr-0.5 xs:mr-3"
                   title="open search box"
+                  className="p-2 mr-0.5 xs:mr-3"
                   aria-label="open search box"
                 >
                   <img
@@ -231,7 +199,7 @@ const Header = () => {
                     height={24}
                     src={searchIcon}
                     alt="search icon"
-                    className="size-5 xs:size-6"
+                    className="size-6"
                   />
                 </button>
 
@@ -247,7 +215,7 @@ const Header = () => {
                     height={24}
                     src={heartIcon}
                     alt="heart icon"
-                    className="size-5 xs:size-6"
+                    className="size-6"
                   />
 
                   {/* active circle shape */}
@@ -265,7 +233,7 @@ const Header = () => {
                     height={24}
                     src={walletIcon}
                     alt="wallet icon"
-                    className="size-5 xs:size-6"
+                    className="size-6"
                   />
                 </button>
               </div>
@@ -274,24 +242,16 @@ const Header = () => {
         </div>
       </header>
 
-      {/* responsive navbar modal */}
+      {/* responsive navbar */}
       <div
-        style={responsiveNavbarStyles}
-        className="fixed inset-0 z-2 w-full h-full transition-opacity bg-brand-darkblue-300/50"
-        onClick={(e) => {
-          const elModalContent =
-            e.currentTarget.querySelector(".modal-content");
-          if (
-            e.target.contains(elModalContent) &&
-            e.target.contains(e.currentTarget)
-          ) {
-            closeResponsiveNavbar();
-          }
+        style={{
+          transform: `translateX(${openResponsiveNavbar ? 0 : -110}%)`,
         }}
+        className="block fixed inset-0 z-2 w-full h-full transition-transform duration-200 lg:hidden"
       >
         {/* modal content */}
-        <div className="inline-block relative z-1 w-full h-full bg-white p-5 xs:w-auto xs:min-w-80">
-          <div className="modal-content">
+        <div className="inline-block relative z-1 w-auto h-full bg-white p-5 xs:min-w-80">
+          <div>
             {/* modal header */}
             <div className="flex items-center justify-between pb-5 mb-5 border-b border-brand-darkblue-300/15">
               {/* logo */}
@@ -352,7 +312,9 @@ const Header = () => {
                         }
                         className="header-responsive-navbar-menu-item"
                       >
-                        <span>Profil rasmini yaratish</span>
+                        <span>Profil rasmlari</span>
+
+                        {/* arrow icon */}
                         <img
                           width={16}
                           height={16}
@@ -371,26 +333,41 @@ const Header = () => {
                         }`}
                       >
                         <ul className="border-l border-brand-darkblue-300/15 ml-6">
+                          {/* all */}
                           <li>
                             <Link
+                              to="/services/profile-images/all"
                               className="header-responsive-navbar-menu-item"
-                              to="/services/create/profile-picture/for-boys/1"
+                            >
+                              Barchasi
+                            </Link>
+                          </li>
+
+                          {/* for boys */}
+                          <li>
+                            <Link
+                              to="/services/profile-images/for-boys"
+                              className="header-responsive-navbar-menu-item"
                             >
                               Bollar uchun
                             </Link>
                           </li>
+
+                          {/* for girls */}
                           <li>
                             <Link
+                              to="/services/profile-images/for-girls"
                               className="header-responsive-navbar-menu-item"
-                              to="/services/create/profile-picture/for-girls/1"
                             >
                               Qizlar uchun
                             </Link>
                           </li>
+
+                          {/* for games */}
                           <li>
                             <Link
+                              to="/services/profile-images/for-games"
                               className="header-responsive-navbar-menu-item"
-                              to="/services/create/profile-picture/for-games/1"
                             >
                               O'yinlar uchun
                             </Link>
@@ -399,6 +376,7 @@ const Header = () => {
                       </div>
                     </li>
 
+                    {/* favicon */}
                     <li>
                       <Link
                         to="/services/create/favicon"
@@ -408,6 +386,7 @@ const Header = () => {
                       </Link>
                     </li>
 
+                    {/* special profile picture */}
                     <li>
                       <Link
                         to="/services/create/special-profile-picture"
@@ -417,6 +396,7 @@ const Header = () => {
                       </Link>
                     </li>
 
+                    {/* qr code */}
                     <li>
                       <Link
                         to="/services/qr-code/generator"
@@ -445,6 +425,15 @@ const Header = () => {
             </nav>
           </div>
         </div>
+
+        {/* modal overlay */}
+        <div
+          onClick={closeResponsiveNavbar}
+          className="absolute inset-0 z-0 size-full bg-brand-darkblue-300/50 transition-transform duration-200 "
+          style={{
+            transform: `translateX(${openResponsiveNavbar ? 0 : 220}%)`,
+          }}
+        ></div>
       </div>
     </>
   );
