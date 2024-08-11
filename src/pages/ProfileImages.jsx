@@ -8,6 +8,7 @@ import { Select } from "antd";
 // components
 import Card from "../components/Card";
 import Search from "../components/Search";
+import EmptyData from "../components/EmptyData";
 import Breadcrumb from "../components/Breadcrumb";
 
 // data
@@ -268,6 +269,16 @@ const ProfileImages = () => {
               <Card key={card.id} card={card} />
             ))}
           </ul>
+
+          {/* empty data */}
+          {profileImages.length === 0 && (
+            <div className="flex flex-col items-center pb-10">
+              <EmptyData className="w-full h-auto aspect-square xs:size-96" />
+
+              {/* title */}
+              <h2 className="text-center">Ma'lumotlar mavjud emas!</h2>
+            </div>
+          )}
         </div>
       </div>
     </>
