@@ -7,6 +7,7 @@ import { Select } from "antd";
 
 // components
 import Card from "../components/Card";
+import Search from "../components/Search";
 import Breadcrumb from "../components/Breadcrumb";
 
 // swiper
@@ -25,10 +26,11 @@ import toonBoyBg from "../assets/images/others/toon-boy-bg.jpg";
 import toonGirlBg from "../assets/images/others/toon-girl-bg.jpg";
 import allApplicationBg from "../assets/images/others/all-application-bg.jpg";
 import toonPubgGameCharactersBg from "../assets/images/others/toon-pubg-game-characters-bg.jpg";
-import Search from "../components/Search";
 
 const ProfileImages = () => {
   const { profileImagesType } = useParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [profileImages, setProfileImages] = useState(profileImagesForBoysData);
   const [breadcrumbItems, setBreadcrumbItems] = useState([
     { name: "Xizmatlar", href: "services" },
     { name: "Profil rasmlari", href: "services/profile-images/all" },
@@ -94,10 +96,28 @@ const ProfileImages = () => {
     },
   ];
 
+  // filter profile images by search, level & type
+  useEffect(() => {
+    if (searchQuery) {
+      const filteredImages = profileImagesForBoysData
+        .filter((profileImage) => {
+          return profileImage.title.toLowerCase().includes(searchQuery);
+        })
+        .sort((a, b) => {
+          const indexA = a.title.toLowerCase().indexOf(searchQuery);
+          const indexB = b.title.toLowerCase().indexOf(searchQuery);
+
+          return indexA - indexB;
+        });
+
+      setProfileImages(filteredImages);
+    } else setProfileImages(profileImagesForBoysData);
+  }, [searchQuery]);
+
   return (
     <>
       {/* breadcrumb */}
-      <Breadcrumb className="mb-12" items={breadcrumbItems} />
+      <Breadcrumb className="mb-10" items={breadcrumbItems} />
 
       {/* main */}
       <div className="pb-12 sm:pb-16">
@@ -110,7 +130,6 @@ const ProfileImages = () => {
           {/* nav link cards */}
           <nav>
             <Swiper
-              loop={true}
               navigation={true}
               spaceBetween={16}
               autoplay={
@@ -135,7 +154,7 @@ const ProfileImages = () => {
               {/* item 1 */}
               <SwiperSlide>
                 <NavLink
-                  title="bollar uchun profil rasmlari"
+                  title="barcha profil rasmlari"
                   to="/services/profile-images/all"
                   className="profile-images-page-nav-link"
                   style={{ backgroundImage: `url(${allApplicationBg})` }}
@@ -211,7 +230,10 @@ const ProfileImages = () => {
           {/* search & filter */}
           <div className="flex flex-col gap-5 xs:flex-row">
             {/* search */}
-            <Search />
+            <Search
+              placeholder="Rasmlarni qidirish..."
+              onChange={(value) => setSearchQuery(value)}
+            />
 
             {/* image leveldal */}
             <Select
@@ -227,7 +249,7 @@ const ProfileImages = () => {
 
           {/* profile images list */}
           <ul className="grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-            {profileImagesForBoysData.map((card) => (
+            {profileImages.map((card) => (
               <Card key={card.id} card={card} />
             ))}
           </ul>
