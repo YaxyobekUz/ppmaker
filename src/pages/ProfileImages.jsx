@@ -26,7 +26,6 @@ import toonBoyBg from "../assets/images/others/toon-boy-bg.jpg";
 import toonGirlBg from "../assets/images/others/toon-girl-bg.jpg";
 import allApplicationBg from "../assets/images/others/all-application-bg.jpg";
 import toonPubgGameCharactersBg from "../assets/images/others/toon-pubg-game-characters-bg.jpg";
-import AdComponent from "../components/AdComponent";
 
 const ProfileImages = () => {
   const { profileImagesType } = useParams();
@@ -138,10 +137,6 @@ const ProfileImages = () => {
     <>
       {/* breadcrumb */}
       <Breadcrumb className="mb-8 sm:mb-10" items={breadcrumbItems} />
-
-      <div className="w-full h-96">
-        <AdComponent />
-      </div>
 
       {/* main */}
       <div className="pb-12 sm:pb-16">
